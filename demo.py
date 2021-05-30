@@ -1,7 +1,5 @@
 import h5py
 import numpy as np
-from tqdm import tqdm
-from random import randint
 import time
 from connectomics.utils.process import polarity2instance
 from skimage.measure import label
@@ -170,11 +168,7 @@ def seg_iou3d(pred, gt ):
     print('Computed matching pairs',time.time()-start,'s')
 
     return gt_matched_id, gt_matched_iou, not_matched_id
-
-def new_func():
-    gt = 0
-    return gt
-
+    
 
 def eval_metrics(gt_matched_id, gt_matched_iou, not_matched_id, thres = 0.3):
     """Calculates the classification metrics (F1 score, Precision, Recall)
