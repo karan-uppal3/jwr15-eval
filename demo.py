@@ -120,8 +120,6 @@ def seg_iou3d(pred, gt ):
         (Matching Pairs of ground truth IDs and Prediction IDs, IoU of each pair, Prediction IDs which didn't match)
     """
 
-    tp = fn = fp = 0.0
-
     # Finding the instances present in the prediction as well as their count
     pred_id, pred_id_count = np.unique(pred, return_counts=True)
     pred_id_count = pred_id_count[pred_id>0]
@@ -172,6 +170,10 @@ def seg_iou3d(pred, gt ):
     print('Computed matching pairs',time.time()-start,'s')
 
     return gt_matched_id, gt_matched_iou, not_matched_id
+
+def new_func():
+    gt = 0
+    return gt
 
 
 def eval_metrics(gt_matched_id, gt_matched_iou, not_matched_id, thres = 0.3):
