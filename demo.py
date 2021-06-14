@@ -29,26 +29,11 @@ def process_gt(gt):
         np.ndarray: pre-processed ground truth volume
     """
 
-    gt = gt[:100,:,:]
-
-    c3 = np.zeros(gt.shape, int)
-    c3[gt > 0] = 1
-    c3 = label(c3)
-
-    c2 = np.zeros(gt.shape, int)
-    c2[gt == 2] = 1
-
-    c1 = np.zeros(gt.shape, int)
-    c1[gt == 1] = 1
-
-    idx = c3 > 0
-    c2[idx] = 2*c3[idx]*c2[idx]
-
-    c1[idx] = (2*c3[idx] - 1)*c1[idx]
-
-    fin = np.maximum(c1,c2)
-
-    return fin
+    tmp = [None]*3
+    tmp[0] = np.array(np.logical_and((label % 2) == 1, label > 0), int) * 255
+    tmp[1] = np.array(np.logical_and((label % 2) == 0, label > 0), int) * 255
+    tmp[2] = np.array((label > 0), int) * 255
+    return polarity2instance(np.array(tmp))
 
 
 def seg_bbox3d(seg, ids):
