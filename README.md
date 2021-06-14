@@ -1,4 +1,4 @@
-# JWR15-ore-process
+# JWR15-pre-process
 
 ## Detailed steps:
 - Process the ground truth volume
