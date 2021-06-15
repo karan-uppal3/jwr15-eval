@@ -19,11 +19,11 @@ def readh5(path):
     return data[vol]
 
 
-def process_gt(gt):
+def process_gt(label):
     """Pre-processing ground truth labels
 
     Args:
-        gt (np.ndarray): Ground Truth label volumne
+        label (np.ndarray): Ground Truth label volumne
 
     Returns:
         np.ndarray: pre-processed ground truth volume
